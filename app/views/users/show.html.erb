@@ -1,1 +1,7 @@
-<h1> This is <%= current_user.email %> Profile page </h1>
+<h1> Alan <%= current_user.email %>   </h1>
+
+<%= form_for posts_path do |f| %>
+  <%= f.label :caption %>
+  <%= f.text_field :caption %>
+  <%= f.submit 'Post' %>
+<% end %>
