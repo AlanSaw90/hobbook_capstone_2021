@@ -1,3 +1,12 @@
 <section class="user-setting">
   <h1> Alan profile settings </h1>
+
+  <%= form_with(model: @user) do |f| %>
+    <%= f.file_field :avatar %>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+    <%= f.label :birth_date %>
+    <%= f.date_field :birth_date %>
+  <%= f.submit 'Save' %>
+  <% end %>
 </section>
