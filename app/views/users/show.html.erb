@@ -1,7 +1,14 @@
-<h1> Alan <%= current_user.email %>   </h1>
+
+<section class="user-profile">
+<h1> <%= @user.username %> </h1>
+
+<div class="user-avatar">
+  <%= image_tag @user.avatar, style: 'width:200px' %>
+</div>
 
 <%= form_for @post do |f| %>
   <%= f.label :caption %>
   <%= f.text_field :caption %>
   <%= f.submit 'Post' %>
 <% end %>
+</section>
