@@ -1,6 +1,6 @@
 
 <section class="user-profile">
-<h1> <%= @user.username %> </h1>
+<h1> <%= @user.email %> </h1>
 
 <div class="user-avatar">
   <% if @user.avatar.attached? %>
@@ -8,13 +8,19 @@
   <% end %>  
 </div>
 
+<div class="user-details">
+  <p>Username: <%= @user.username %></p>
+  <p>Birth: <%= @user.birth_date %></p>
+</div>
+
+<% if current_user == @user %>
 <%= form_for @post do |f| %>
   <%= f.file_field :photo %>
   <%= f.label :caption %>
   <%= f.text_field :caption %>
   <%= f.submit 'Post' %>
 <% end %>
-
+<% end %>
 
 <% @posts.each do |post| %>
   <% if post.photo.attached? %>
