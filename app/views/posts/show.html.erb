@@ -6,9 +6,7 @@
     <%= @post.caption %>
 
     <div class="comment-form">
-        <%= form_with(model: [@post, @comment]) do |f| %>
-            <%= f.text_field :content, placeholder: 'Write your comment here' %>
-            <%= f.submit 'Comment' %>
+        <%= form_with(model: [@
         <% end %>    
     </div>    
 </section>
