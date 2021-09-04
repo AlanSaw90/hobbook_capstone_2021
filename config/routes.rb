@@ -5,5 +5,7 @@ Rails.application.routes.draw do
 root 'pages#homepage'
 
 resources :users
-resources :posts
+resources :posts do
+    resources :comments
+  end  
 end
