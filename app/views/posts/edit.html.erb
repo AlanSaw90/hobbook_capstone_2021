@@ -1,0 +1,8 @@
+<section class="single-post-edit">
+ <%= form_for @post do |f| %>  
+  <%= f.file_field :photo %>
+  <%= f.label :caption %>
+  <%= f.text_field :caption %>
+  <%= f.submit 'Post' %>
+ <% end %> 
+</section>
