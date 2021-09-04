@@ -29,6 +29,12 @@ end
   end  
 end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to user_path(current_user), notice: 'Post was successfully deleted'
+  end 
+
   private
     def post_params
       params.require(:post).permit(:caption, :photo)
