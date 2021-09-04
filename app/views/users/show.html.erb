@@ -3,12 +3,28 @@
 <h1> <%= @user.username %> </h1>
 
 <div class="user-avatar">
-  <%= image_tag @user.avatar, style: 'width:200px' %>
+  <% if @user.avatar.attached? %>
+    <%= image_tag @user.avatar, style: 'width:200px' %>
+  <% end %>  
 </div>
 
 <%= form_for @post do |f| %>
+  <%= f.file_field :photo %>
   <%= f.label :caption %>
   <%= f.text_field :caption %>
   <%= f.submit 'Post' %>
 <% end %>
+
+
+<% @posts.each do |post| %>
+  <% if post.photo.attached? %>
+    <%= image_tag post.photo, style: 'width: 200px;' %>
+  <% end %>
+    <%= post.caption %>
+    <%= link_to 'Show', post_path(post) %>
+  <% end %>  
+
+
+
+
 </section>

@@ -1,0 +1,7 @@
+
+<section class='single-post-show'>
+  <% if @post.photo.attached? %>
+    <%= image_tag @post.photo, style: 'width: 200px;' %>
+  <% end %>
+    <%= @post.caption %>
+</section>
