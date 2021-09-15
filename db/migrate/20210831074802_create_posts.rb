@@ -5,6 +5,9 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       # manually added
       t.references :user, null: false, foreign_key: true
       t.string :caption
+      t.string :location
+      t.decimal :latitude
+      t.decimal :longitude
 
       t.timestamps
     end

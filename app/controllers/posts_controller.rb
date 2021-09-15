@@ -37,6 +37,8 @@ end
     redirect_to user_path(current_user), notice: 'Post was successfully deleted'
   end 
 
+  
+
   private
     def post_params
       params.require(:post).permit(:caption, :photo)
