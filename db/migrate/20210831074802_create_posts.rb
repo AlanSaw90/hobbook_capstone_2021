@@ -8,6 +8,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.string :location
       t.decimal :latitude
       t.decimal :longitude
+      t.decimal :price_per_day
 
       t.timestamps
     end

@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!
 
   def homepage
-    @welcome ="Welcome to Hobbook"
+    @welcome ="Hobbook"
     @posts = Post.all
   end
 

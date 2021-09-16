@@ -1,11 +1,13 @@
 
 <%= turbo_frame_tag 'test' do %>
   <h1> <%= @welcome %> </h1>
-  
 <% end %>
 
 <% @posts.each do |post| %>
   <%= link_to post_path(post) do %>
+  <% if post.photo.attached? %>
+    <%= image_tag post.photo, style: 'width: 200px;' %>
+  <% end %>
     <%= post.caption %>
   <% end %>
 <% end %>

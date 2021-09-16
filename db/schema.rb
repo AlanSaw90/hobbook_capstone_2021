@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2021_09_15_041557) do
 
   create_table "bookings", force: :cascade do |t|
     t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
     t.string "ref_no"
     t.date "check_in_date"
     t.date "check_out_date"
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(version: 2021_09_15_041557) do
     t.decimal "total"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_bookings_on_post_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
@@ -71,6 +73,7 @@ ActiveRecord::Schema.define(version: 2021_09_15_041557) do
     t.string "location"
     t.decimal "latitude"
     t.decimal "longitude"
+    t.decimal "price_per_day"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
@@ -92,6 +95,7 @@ ActiveRecord::Schema.define(version: 2021_09_15_041557) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bookings", "posts"
   add_foreign_key "bookings", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"

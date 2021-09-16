@@ -9,5 +9,6 @@ get 'about', to: 'pages#about'
 resources :users
 resources :posts do
     resources :comments
+    resources :bookings
   end  
 end

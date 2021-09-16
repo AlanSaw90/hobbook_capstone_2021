@@ -20,6 +20,9 @@
          <% end %>   
      </div>    
 
-
-    
+     <div class="bookings">
+        <%= form_with(model: [@post, @booking], data: {turbo: false}) do |f| %>  
+          <%= f.submit 'Book' %>
+        <% end %>  
+     </div>
 </section>

@@ -14,6 +14,7 @@ end
     @post = Post.find(params[:id])
     @comment = Comment.new
     @comments = @post.comments
+    @booking = Booking.new
   end 
 
   def edit
@@ -37,7 +38,7 @@ end
     redirect_to user_path(current_user), notice: 'Post was successfully deleted'
   end 
 
-  
+
 
   private
     def post_params
