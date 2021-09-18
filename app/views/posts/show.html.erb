@@ -1,28 +1,41 @@
 
-<section class='single-post-show'>
+
+<div class="card single-post-show" style="width: 600px; height: 1000px; margin-left: 35%; border-radius:15px;">
+
   <% if @post.photo.attached? %>
-    <%= image_tag @post.photo, style: 'width: 200px;' %>
+    <%= image_tag @post.photo, style: 'width: 600px; border-radius: 15px;' %>
   <% end %>
-    <%= @post.caption %>
+    
+    <h5 class="card-title" style="margin-left: 215px;"> <%= @post.caption %></h5>
+    
 
     <div class="comment-form">
         <%= form_with(model: [@post, @comment]) do |f| %>
-            <%= f.text_field :content, placeholder: 'Write your comment here' %>
+            <%= f.text_field :content, placeholder: 'Write your comment here', style:'width: 84.5%; border-radius: 5px;' %>
             <%= f.submit 'Comment' %>
         <% end %>    
     </div>    
-
+    <br/>
     <div class="post-comments">
         <% @comments.each do |comment| %>
-            <%= comment.user.username %>
-            <br>
-            <p> comment: <%= comment.content %> </p>
+            <p class="nama" style="color: white; background-color: #0d6efd; border-radius: 5px; padding-left: 5px; " ><%= comment.user.username %></p> 
+            <p class="nama" style=" border-radius: 5px; padding-left: 5px; border-bottom: 1px solid black;">  comment: <%= comment.content %> </p>
          <% end %>   
      </div>    
-
+     <br/> 
      <div class="bookings">
         <%= form_with(model: [@post, @booking], data: {turbo: false}) do |f| %>  
-          <%= f.submit 'Book' %>
+          <%= f.submit 'Book', 
+          style:'margin-left: 40%; 
+                 color: white; 
+                 background-color: #3DE9D8; 
+                 border: none; 
+                 width:70px; 
+                 height: 35px; border-radius: 5px;' %>
         <% end %>  
      </div>
-</section>
+
+</div>
+
+
+

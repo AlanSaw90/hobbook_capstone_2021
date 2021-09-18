@@ -13,4 +13,9 @@ class Booking < ApplicationRecord
         self.save
       end
     
+      def calculate_total
+        total_days = days_between + 1
+        self.total = booking.price_per_day * total_days
+        self.save
+      end
 end   

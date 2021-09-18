@@ -1,8 +1,19 @@
+<br/>
 <section class="single-post-edit">
+    <div class="card" style="width: 600px; margin-left: 35%; height: 150px;">
+    <div class="card-body">
+        <h4 class="card-title" style="margin-left: 35%;">Booking details</h4>
+    </div>
  <%= form_for @post do |f| %>  
-  <%= f.file_field :photo %>
+  <%= f.file_field :photo, style:'padding-left: 5px; padding-bottom: 20px;' %>
   <%= f.label :caption %>
   <%= f.text_field :caption %>
   <%= f.submit 'Post' %>
  <% end %> 
+ 
+ </div>
 </section>
+
+
+
+ 

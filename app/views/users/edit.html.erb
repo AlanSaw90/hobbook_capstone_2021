@@ -1,6 +1,8 @@
+<div class="card" style="width: 18rem; width: 1000px; height: 300px; margin-left: 25%;">
 <section class="user-setting">
-  <h1> Alan profile settings </h1>
-
+  <div class="card-body">
+  <h5 class="card-title" style="font-size: 30px; margin-left: 35%; padding-bottom: 15px;">Profile Settings</h5>
+  <div class="set" style="margin-left: 5%;">
   <%= form_with(model: @user) do |f| %>
     <%= f.file_field :avatar %>
     <%= f.label :username %>
@@ -9,4 +11,8 @@
     <%= f.date_field :birth_date %>
   <%= f.submit 'Save' %>
   <% end %>
+  </div>
+  </div>
 </section>
+</div>
+

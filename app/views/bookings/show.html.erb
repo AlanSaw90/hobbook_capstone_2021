@@ -1,8 +1,32 @@
+<br/>
+<section class="single-booking-page">
+<div class="card" style="width: 600px; margin-left: 35%;">
 <div class="booking-details">
-    <section class="single-booking-page">
-     <h1>Booking details</h1>
-     <p>Reference No. <%= @booking.ref_no %></p>
-     <p>total: <%= @booking.total %></p>
-     <p>status: <%= @booking.status %></p>
-    </section>
+    <div class="card-body">
+        <h4 class="card-title" style="margin-left: 35%;">Booking details</h4>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Reference No: <%= @booking.ref_no %></li>
+        <li class="list-group-item">Total: <%= @booking.total %></li>
+        <li class="list-group-item">Status: <%= @booking.status %></li>
+    </ul>
+
+    <% if @booking.status == 'pending' %>
+        <div class='booking-payment' style="margin-left: 40%;">
+            <%= form_with url: '/stripes', method: :post do |f| %>
+            <%= f.text_field :booking_id, value: "#{@booking.id}", hidden: true %>
+            <%= f.submit 'Confirm Booking'%>
+        <% end %>
+        <br/>
+        </div>
+    <% elsif @booking.status == 'cancelled' %>
+        <p>This Booking has been cancelled.</p>
+    <% else %>
+        <button>
+            <%= link_to 'View payment details', listing_booking_payment_details_path(@booking)%>
+        </button>
+    <% end %>
 </div>    
+</div>   
+</section> 
+

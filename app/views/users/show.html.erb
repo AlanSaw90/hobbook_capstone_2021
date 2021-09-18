@@ -1,38 +1,59 @@
-
 <section class="user-profile">
-<h1> <%= @user.username %> </h1>
+<div class="card" style="width: 45%; margin-left: 30%;">
+  <div class="card-body">
+  <h1 class="card-title" style="padding-left: 110px; font-size: 25px; margin-left: 32%; color: #0d6efd;"> <%= @user.username %> </h1>
+    <div class="user-avatar" style="padding-left: 10px;">
+      <% if @user.avatar.attached? %>
+        <%= image_tag @user.avatar, style: 'width:200px; border-radius: 15px; margin-left: 35%;' %>
+      <% end %>  
+    </div>
+  </div>
+  <div class="user-details">
+    <p style="margin-left: 15%; border-bottom: grey solid 1px; border-left: 1px solid black;">Username: <%= @user.username %></p>
+    <p style="margin-left: 15%; border-bottom: grey solid 1px; border-left: 1px solid black;">Birth: <%= @user.birth_date %></p>
+  </div>
+  <hr></hr>
 
-<div class="user-avatar">
-  <% if @user.avatar.attached? %>
-    <%= image_tag @user.avatar, style: 'width:200px' %>
-  <% end %>  
-</div>
-
-<div class="user-details">
-  <p>Username: <%= @user.username %></p>
-  <p>Birth: <%= @user.birth_date %></p>
-</div>
-
-<% if current_user == @user %>
-<%= form_for @post do |f| %>
-  <%= f.file_field :photo %>
-  <%= f.label :caption %>
-  <%= f.text_field :caption %>
-  <%= f.submit 'Post' %>
-<% end %>
-<% end %>
+  <div class="upload" style="margin-left: 15%;">
+  <% if current_user == @user %>
+    <%= form_for @post do |f| %>
+      <%= f.file_field :photo, style:"  border: black solid 1px; height:30px; border-radius: 5px; " %>
+      <%= f.label :caption, style: " height:25px; border-radius: 5px; margin-left: 10px;" %>
+      <%= f.text_field :caption %>
+      <%= f.submit 'Post', style:" background-color: #0d6efd; border: none; color: white; height:30px; border-radius: 5px"; %>
+    <% end %>
+  <% end %>
+  </div>
+  <br/>
 
 <% @posts.each do |post| %>
   <% if post.photo.attached? %>
-    <%= image_tag post.photo, style: 'width: 200px;' %>
+    <div class="col-md-4">
+    <%= image_tag post.photo, style: 'width: 600px; margin-left: 45%; border-radius: 20px;'  %>
+    </div>
   <% end %>
-  <%= post.caption %>
-  <%= link_to 'Show', post_path(post) %>
-  <%= link_to 'Get Direction', "https://maps.google.com/?q=#{@post.latitude},#{@post.longitude}", target: '_blank' %>
-  <% if current_user == @user %>
-    <%= link_to 'Edit', edit_post_path(post) %>
-    <%= button_to 'Delete', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %>
+
+  <div class="card-body">
+    <h5 class="card-title" style="height: 1px; margin-left: 42%;"> <%= post.caption %></h5>
+  </div>  
+  <hr></hr>
+    <div class="card-body" style="margin-left:30%;  ">
+      <a href=<%= post_path(post) %> class="card-link btn btn-primary">Post</a>
+        <%= link_to 'Direction', "https://maps.google.com/?q=#{@post.latitude},#{@post.longitude}", target: '_blank', style: 'color: white; background-color: #0d6efd; border-radius: 5px; text-decoration: none; font-size: 15px; padding: 7px 5px 10px 5px;' %>
+        <% if current_user == @user %>  
+      <a href=<%= edit_post_path(post) %> class="card-link btn btn-primary">Edit</a>
+        <button type="button" class="btn btn-danger"> <%= button_to 'Delete', post_path(post), method: :delete, data: { confirm: 'Are you sure?'}, style: 'background-color: #F43122; border: none; color: white; height:30px; border-radius: 5px;' %>
+    </div>
+    <% end %>
   <% end %>
-<% end %>
-  
+  </div>
 </section>
+
+
+
+
+
+
+
+
+
